@@ -2,7 +2,8 @@
 
 ## A food ordering and delivery app
 
-###Abstract
+### Abstract
+
 - **Functions**
 
  *This app can order food and set the food delivered time.*
@@ -18,10 +19,11 @@ are too busy to go to the restaurants in person. This app can facilitate the lif
 their time and making the food of the restaurant that only allows delivery available to them.*
 
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+### User Stories
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+- As a user, I want to be able to add a kind of food to my food-ordering list.
+- As a user, I want to be able to view the list of food on my food-ordering list.
+- As a user, I want to be able to set a time that I want the food to be delivered.
+- As a user, I want to be able to delete a kind of food from my food-ordering list.
+- As a user, I want to be able to see the number of food on my food-ordering list.
+- As a user, I want to be able to see the total price of the food on my food-ordering list.
