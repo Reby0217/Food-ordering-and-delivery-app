@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-//Represents a list of foods
+//Represents a list of food with total food price, total number of food in the list, and delivery time
 public class FoodList {
     private ArrayList<Food> foodList;
     private double totalPrice;
@@ -14,25 +14,25 @@ public class FoodList {
         foodList = new ArrayList<>();
     }
 
-    //EFFECTS: returns the list of foods
+    //EFFECTS: returns the list of food
     public ArrayList<Food> getFoodList() {
         return foodList;
     }
 
     //MODIFIES: this
-    //EFFECTS: adds the food to the list of foods
+    //EFFECTS: adds the food to the list of food
     public void addFood(Food food) {
         foodList.add(food);
     }
 
     //MODIFIES: this
-    //EFFECTS: remove the food from the list of foods
+    //EFFECTS: remove the food from the list of food
     public void removeFood(Food food) {
         foodList.remove(food);
     }
 
     //REQUIRES: totalPrice >= 0
-    //EFFECTS: returns the sum of the prices of the foods in the list
+    //EFFECTS: returns the sum of the prices of all the food in the list
     public double getTotalPrice() {
         totalPrice = 0;
         for (Food food : foodList) {
@@ -42,7 +42,7 @@ public class FoodList {
     }
 
     //REQUIRES: numOfFood >= 0
-    //EFFECTS: returns the total number of foods in the list
+    //EFFECTS: returns the total number of food in the list
     public int getNumOfFood() {
         numOfFood = 0;
         for (Food food : foodList) {
@@ -56,7 +56,7 @@ public class FoodList {
         return foodList.contains(food);
     }
 
-    //EFFECTS: returns the number of foods currently the list
+    //EFFECTS: returns the number of food currently the list
     public int length() {
         return foodList.size();
     }

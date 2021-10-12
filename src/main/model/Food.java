@@ -1,6 +1,6 @@
 package model;
 
-// Represents the name and price of the food
+// Represents a food item having a name and a price
 public class Food {
     private String name;
     private double price;
