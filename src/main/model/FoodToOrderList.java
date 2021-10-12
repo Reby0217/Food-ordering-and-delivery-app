@@ -2,15 +2,15 @@ package model;
 
 import java.util.ArrayList;
 
-//Represents a list of food with total food price, total number of food in the list, and delivery time
-public class FoodList {
+//Represents a list of food to be ordered with total food price, total number of food in the list, and delivery time
+public class FoodToOrderList {
     private ArrayList<Food> foodList;
     private double totalPrice;
     private int numOfFood;
     private String deliveredTime;
 
     //EFFECTS: initializes a newly created FoodList as an empty list
-    public FoodList() {
+    public FoodToOrderList() {
         foodList = new ArrayList<>();
     }
 

@@ -21,9 +21,9 @@ their time and making the food of the restaurant that only allows delivery avail
 
 ### User Stories
 
-- As a user, I want to be able to add a food item to my food-to-be-ordered list.
-- As a user, I want to be able to view the list of food on my food-to-be-ordered list.
+- As a user, I want to be able to add a food item to my food-to-order list.
+- As a user, I want to be able to view the list of food on my food-to-order list.
 - As a user, I want to be able to set a time that I want the ordered food to be delivered.
-- As a user, I want to be able to delete a food item from my food-to-be-ordered list.
-- As a user, I want to be able to see the number of food on my food-to-be-ordered list.
-- As a user, I want to be able to see the total price of the food on my food-to-be-ordered list.
+- As a user, I want to be able to delete a food item from my food-to-order list.
+- As a user, I want to be able to see the number of food on my food-to-order list.
+- As a user, I want to be able to see the total price of the food on my food-to-order list.
