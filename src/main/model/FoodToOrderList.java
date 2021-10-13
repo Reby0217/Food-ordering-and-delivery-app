@@ -26,7 +26,8 @@ public class FoodToOrderList {
     }
 
     //MODIFIES: this
-    //EFFECTS: remove the food from the list of food
+    //EFFECTS: If the food is in the list of food, then removes it from that list of food.
+    //         Otherwise, does nothing.
     public void removeFood(Food food) {
         foodToOrderList.remove(food);
     }

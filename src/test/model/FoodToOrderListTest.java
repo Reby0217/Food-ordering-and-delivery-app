@@ -38,23 +38,12 @@ class FoodToOrderListTest {
         assertTrue(testList.contains(testFoodB));
 
         testList.addFood(testFoodC);
-        assertEquals(3, testList.size());
-        assertTrue(testList.contains(testFoodA));
-        assertTrue(testList.contains(testFoodB));
-        assertTrue(testList.contains(testFoodC));
-
         testList.addFood(testFoodC);
-        assertEquals(4, testList.size());
-        assertTrue(testList.contains(testFoodA));
-        assertTrue(testList.contains(testFoodB));
-        assertTrue(testList.contains(testFoodC));
-
         testList.addFood(testFoodC);
         assertEquals(5, testList.size());
         assertTrue(testList.contains(testFoodA));
         assertTrue(testList.contains(testFoodB));
         assertTrue(testList.contains(testFoodC));
-
 
         assertEquals(5, testList.getFoodToOrderList().size());
     }
@@ -63,6 +52,7 @@ class FoodToOrderListTest {
     public void testRemoveFood() {
         assertFalse(testList.contains(testFoodA));
         assertFalse(testList.contains(testFoodB));
+        assertFalse(testList.contains(testFoodC));
 
         testList.addFood(testFoodA);
         testList.addFood(testFoodB);
@@ -71,6 +61,12 @@ class FoodToOrderListTest {
         testList.removeFood(testFoodA);
         assertFalse(testList.contains(testFoodA));
         assertEquals(1, testList.size());
+
+        testList.removeFood(testFoodC);
+        assertEquals(1, testList.size());
+
+        testList.removeFood(testFoodB);
+        assertEquals(0, testList.size());
     }
 
     @Test
