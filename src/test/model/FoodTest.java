@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FoodTest {
+public class FoodTest {
     private Food testFood1;
     private Food testFood2;
     private Food testFood3;
@@ -34,8 +34,8 @@ class FoodTest {
     public void testSetName() {
         assertEquals("Salad", testFood1.getName());
 
-        testFood1.setName("Caesar salad");
-        assertEquals("Caesar salad", testFood1.getName());
+        testFood1.setName("Caesar Salad");
+        assertEquals("Caesar Salad", testFood1.getName());
         assertEquals(11.78, testFood1.getPrice());
     }
 
