@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FoodToOrderListTest {
@@ -93,10 +96,36 @@ class FoodToOrderListTest {
     }
 
     @Test
-    public void testSetDeliveredTime() {
-        assertEquals("Waiting to set the delivered time", testList.getDeliveredTime());
+    public void testSetDeliveredTime() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String time0 = "00:00";
+        String time1 = "17:45";
+        String invalidTime1 = "";
+        String invalidTime2 = "NoNoNoNo";
+        String invalidTime3 = "1235";
 
-        testList.setDeliveredTime("17:45");
-        assertEquals("17:45", testList.getDeliveredTime());
+        testList.setDeliveredTime(time0);
+        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+
+        testList.setDeliveredTime(time1);
+        assertEquals(sdf.parse(time1), testList.getDeliveredTime());
+
+        testList.setDeliveredTime(invalidTime1);
+        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+
+        testList.setDeliveredTime(invalidTime2);
+        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+
+        testList.setDeliveredTime(invalidTime3);
+        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+    }
+
+    @Test
+    public void testIsValidTime() {
+        String time = "21:36";
+        assertTrue(testList.isValidTime(time));
+
+        String invalidTime = "YesYesYes";
+        assertFalse(testList.isValidTime(invalidTime));
     }
 }

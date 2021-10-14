@@ -15,7 +15,6 @@ public class FoodTest {
         testFood1 = new Food("Salad", 11.78);
         testFood2 = new Food("Poke Bowl", 15.02);
         testFood3 = new Food("Calamari", 6);
-
     }
 
     @Test
@@ -46,5 +45,8 @@ public class FoodTest {
         testFood2.setPrice(13.29);
         assertEquals(13.29, testFood2.getPrice());
         assertEquals("Poke Bowl", testFood2.getName());
+
+        testFood3.setPrice(-5.8);
+        assertEquals(999999999, testFood3.getPrice());
     }
 }
