@@ -48,5 +48,8 @@ public class FoodTest {
 
         testFood3.setPrice(-5.8);
         assertEquals(999999999, testFood3.getPrice());
+
+        testFood3.setPrice(0);
+        assertEquals(0, testFood3.getPrice());
     }
 }

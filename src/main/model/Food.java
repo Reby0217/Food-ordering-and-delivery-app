@@ -34,11 +34,10 @@ public class Food {
     //EFFECTS: if the price is non-negative, sets or changes the price of the food.
     //         Otherwise, sets the price to be 999999999.
     public void setPrice(double price) {
-        if (price >= 0) {
+        if (price >= 0.0) {
             this.price = price;
         } else {
             this.price = 999999999;
         }
-
     }
 }
