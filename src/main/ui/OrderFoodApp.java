@@ -3,7 +3,6 @@ package ui;
 import model.Food;
 import model.FoodToOrderList;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,13 +18,13 @@ public class OrderFoodApp {
     private Scanner input;
 
     //EFFECTS: runs the ordering food application
-    public OrderFoodApp() throws ParseException {
+    public OrderFoodApp() {
         runOrderFoodApp();
     }
 
     //MODIFIES: this
     //EFFECTS: processes user input
-    private void runOrderFoodApp() throws ParseException {
+    private void runOrderFoodApp() {
         boolean keepGoing = true;
         String command = null;
 
@@ -42,6 +41,8 @@ public class OrderFoodApp {
             }
         }
 
+        System.out.println("Have a good day! See you next time.");
+
     }
 
     //MODIFIES: this
@@ -57,12 +58,12 @@ public class OrderFoodApp {
 
     //EFFECTS: shows the menu of choices to user
     private void displayMenu() {
-        System.out.println("Please select from:");
-        System.out.println("[1] Add a food item to your food-to-order list");
-        System.out.println("[2] Remove a food item from your food-to-order list");
-        System.out.println("[3] Set a delivered time");
-        System.out.println("[4] View your current order summary");
-        System.out.println("[5] Quit the App");
+        System.out.println("\nPlease select from:");
+        System.out.println("\t[1] Add a food item to your food-to-order list");
+        System.out.println("\t[2] Remove a food item from your food-to-order list");
+        System.out.println("\t[3] Set a delivered time");
+        System.out.println("\t[4] View your current order summary");
+        System.out.println("\t[5] Quit the APP");
     }
 
     //MODIFIES: this
@@ -129,20 +130,21 @@ public class OrderFoodApp {
 
     //EFFECTS: displays the food menu to user
     private void displayFoodMenu() {
-        System.out.println("\ts -> " + salad.getName() + "($" + salad.getPrice() + ")");
-        System.out.println("\to -> " + onionRings.getName() + "($" + onionRings.getPrice() + ")");
-        System.out.println("\tp -> " + pokeBowl.getName() + "($" + pokeBowl.getPrice() + ")");
+        System.out.println("\ts -> " + salad.getName() + " ($" + salad.getPrice() + ")");
+        System.out.println("\to -> " + onionRings.getName() + " ($" + onionRings.getPrice() + ")");
+        System.out.println("\tp -> " + pokeBowl.getName() + " ($" + pokeBowl.getPrice() + ")");
     }
 
     //MODIFIES: this
     //EFFECTS: sets the delivered time of this order
     private void doSetTime() {
         foodToOrderList.getDeliveredTime();
+        System.out.println("Default time is 00:00 (24-hour-clock).");
         System.out.println("Enter your preferred delivered time in XX:XX form (24-hour-clock)");
 
         String time = input.next();
         if (!foodToOrderList.isValidTime(time)) {
-            System.out.println("Invalid time. Time is set to 00:00 as default.\n");
+            System.out.println("Invalid time....\n");
         } else {
             foodToOrderList.setDeliveredTime(time);
         }
@@ -157,7 +159,7 @@ public class OrderFoodApp {
         doViewFoodInList();
         System.out.println("Total number of food: " + foodToOrderList.getTotalFoodNum() + "\n");
         System.out.println("Total price of added food: $" + foodToOrderList.getTotalPrice() + "\n");
-        System.out.println("Delivered time: " + foodToOrderList.getDeliveredTime());
+        System.out.println("Delivered time in 24-hour clock: " + foodToOrderList.getDeliveredTime());
         separatorLine();
     }
 
@@ -165,13 +167,13 @@ public class OrderFoodApp {
     private void doViewFoodInList() {
         System.out.println("All food added to your food-to-order list:");
         ArrayList<Food> foodInList = foodToOrderList.getFoodList();
-        for (Food food: foodInList) {
+        for (Food food : foodInList) {
             System.out.println("\t" + food.getName() + "($" + food.getPrice() + ")");
         }
         System.out.println("\r");
     }
 
-    //EFFECTS: make separator line, make console base easier to check.
+    //EFFECTS: prints a separator line to make the console easier to read.
     private void separatorLine() {
         System.out.println("__________________________________________________________");
     }

@@ -3,7 +3,13 @@ package model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 //Represents a list of food to be ordered with total food price, total number of food in the list, and delivery time
@@ -50,7 +56,7 @@ public class FoodToOrderList {
     //EFFECTS: returns the total number of food in the list
     public int getTotalFoodNum() {
         totalFoodNum = 0;
-        for (Food food: foodList) {
+        for (Food food : foodList) {
             totalFoodNum += 1;
         }
         return totalFoodNum;
@@ -75,7 +81,6 @@ public class FoodToOrderList {
         return deliveredTime;
     }
 
-    //REQUIRES: time should be written in the 24-hour notation
     //MODIFIES: this
     //EFFECTS: If the time is invalid, sets delivered time as "00:00" by default time
     //         Otherwise, sets delivered time to be the time in hh:mm pattern.
@@ -87,13 +92,18 @@ public class FoodToOrderList {
 
     }
 
-    //EFFECTS: returns true if the time is in hh:mm pattern. Otherwise, returns false.
+    // This method references code from this website
+    // Link: https://stackoverflow.com/a/47886041
+    //EFFECTS: returns true if the time is in HH:mm pattern (both HH and mm must be 2 digits)
+    //         Otherwise, returns false.
     public boolean isValidTime(String time) {
-        DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm")
+                .withResolverStyle(ResolverStyle.STRICT);
+
         try {
-            timeFormat.parse(time);
+            LocalTime.parse(time, timeFormat);
             return true;
-        } catch (ParseException pe) {
+        } catch (DateTimeParseException e) {
             return false;
         }
 

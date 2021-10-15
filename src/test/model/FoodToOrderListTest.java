@@ -77,7 +77,7 @@ class FoodToOrderListTest {
         assertEquals(6, testList.getTotalPrice());
 
         testList.addFood(testFoodC);
-        assertEquals(6 + 8, testList.getTotalPrice());
+        assertEquals(14, testList.getTotalPrice());
     }
 
     @Test
@@ -96,7 +96,7 @@ class FoodToOrderListTest {
     public void testSetDeliveredTime() {
         String time0 = "00:00";
         String time1 = "17:45";
-        String invalidTime1 = "";
+        String invalidTime1 = "1234:56789";
         String invalidTime2 = "NoNoNoNo";
         String invalidTime3 = "1235";
 
@@ -120,10 +120,32 @@ class FoodToOrderListTest {
 
     @Test
     public void testIsValidTime() {
-        String time = "21:36";
-        assertTrue(testList.isValidTime(time));
+        String time0 = "00:00";
+        assertTrue(testList.isValidTime(time0));
 
-        String invalidTime = "YesYesYes";
-        assertFalse(testList.isValidTime(invalidTime));
+        String time1 = "13:46";
+        assertTrue(testList.isValidTime(time1));
+
+        String time2 = "23:59";
+        assertTrue(testList.isValidTime(time2));
+
+        String invalidTime1 = "24:00";
+        assertFalse(testList.isValidTime(invalidTime1));
+
+        String invalidTime2 = "YesYesYes...";
+        assertFalse(testList.isValidTime(invalidTime2));
+
+        String invalidTime3 = "13.46";
+        assertFalse(testList.isValidTime(invalidTime3));
+
+        String invalidTime4 = "10:69";
+        assertFalse(testList.isValidTime(invalidTime4));
+
+        String invalidTime5 = "9:10";
+        assertFalse(testList.isValidTime(invalidTime5));
+
+        String invalidTime6 = "09:1";
+        assertFalse(testList.isValidTime(invalidTime6));
+
     }
 }
