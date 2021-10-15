@@ -3,9 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class FoodToOrderListTest {
@@ -17,9 +14,9 @@ class FoodToOrderListTest {
     @BeforeEach
     public void setUp() {
         testList = new FoodToOrderList();
-        testFoodA = new Food("Onion Rings", 6.36);
+        testFoodA = new Food("Onion Rings", 6);
         testFoodB = new Food("Hash Browns", 3);
-        testFoodC = new Food("Tuna Salad", 8.89);
+        testFoodC = new Food("Tuna Salad", 8);
     }
 
     @Test
@@ -48,7 +45,7 @@ class FoodToOrderListTest {
         assertTrue(testList.contains(testFoodB));
         assertTrue(testList.contains(testFoodC));
 
-        assertEquals(5, testList.getFoodToOrderList().size());
+        assertEquals(5, testList.getFoodList().size());
     }
 
     @Test
@@ -77,10 +74,10 @@ class FoodToOrderListTest {
         assertEquals(0, testList.getTotalPrice());
 
         testList.addFood(testFoodA);
-        assertEquals(6.36, testList.getTotalPrice());
+        assertEquals(6, testList.getTotalPrice());
 
         testList.addFood(testFoodC);
-        assertEquals(6.36 + 8.89, testList.getTotalPrice());
+        assertEquals(6 + 8, testList.getTotalPrice());
     }
 
     @Test
@@ -96,28 +93,29 @@ class FoodToOrderListTest {
     }
 
     @Test
-    public void testSetDeliveredTime() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+    public void testSetDeliveredTime() {
         String time0 = "00:00";
         String time1 = "17:45";
         String invalidTime1 = "";
         String invalidTime2 = "NoNoNoNo";
         String invalidTime3 = "1235";
 
+        assertEquals(time0, testList.getDeliveredTime());
+
         testList.setDeliveredTime(time0);
-        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+        assertEquals(time0, testList.getDeliveredTime());
 
         testList.setDeliveredTime(time1);
-        assertEquals(sdf.parse(time1), testList.getDeliveredTime());
+        assertEquals(time1, testList.getDeliveredTime());
 
         testList.setDeliveredTime(invalidTime1);
-        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+        assertEquals(time0, testList.getDeliveredTime());
 
         testList.setDeliveredTime(invalidTime2);
-        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+        assertEquals(time0, testList.getDeliveredTime());
 
         testList.setDeliveredTime(invalidTime3);
-        assertEquals(sdf.parse(time0), testList.getDeliveredTime());
+        assertEquals(time0, testList.getDeliveredTime());
     }
 
     @Test

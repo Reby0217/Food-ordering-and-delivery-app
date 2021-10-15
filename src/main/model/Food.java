@@ -3,11 +3,11 @@ package model;
 // Represents a food item having a name and a price
 public class Food {
     private String name;
-    private double price;
+    private int price;
 
     //REQUIRES: the length of the foodName is not zero and foodPrice >= 0
     //EFFECTS: sets the name of the food to foodName and sets the price of the food to foodPrice
-    public Food(String foodName, double foodPrice) {
+    public Food(String foodName, int foodPrice) {
         name = foodName;
         price = foodPrice;
     }
@@ -18,7 +18,7 @@ public class Food {
     }
 
     //EFFECTS: returns the price of the food
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -33,8 +33,8 @@ public class Food {
     //MODIFIES: this
     //EFFECTS: if the price is non-negative, sets or changes the price of the food.
     //         Otherwise, sets the price to be 999999999.
-    public void setPrice(double price) {
-        if (price >= 0.0) {
+    public void setPrice(int price) {
+        if (price >= 0) {
             this.price = price;
         } else {
             this.price = 999999999;

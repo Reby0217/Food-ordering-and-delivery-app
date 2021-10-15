@@ -12,18 +12,18 @@ public class FoodTest {
 
     @BeforeEach
     public void setUp() {
-        testFood1 = new Food("Salad", 11.78);
-        testFood2 = new Food("Poke Bowl", 15.02);
+        testFood1 = new Food("Salad", 11);
+        testFood2 = new Food("Poke Bowl", 15);
         testFood3 = new Food("Calamari", 6);
     }
 
     @Test
     public void testConstructor() {
         assertEquals("Salad", testFood1.getName());
-        assertEquals(11.78, testFood1.getPrice());
+        assertEquals(11, testFood1.getPrice());
 
         assertEquals("Poke Bowl", testFood2.getName());
-        assertEquals(15.02, testFood2.getPrice());
+        assertEquals(15, testFood2.getPrice());
 
         assertEquals("Calamari", testFood3.getName());
         assertEquals(6, testFood3.getPrice());
@@ -35,18 +35,18 @@ public class FoodTest {
 
         testFood1.setName("Caesar Salad");
         assertEquals("Caesar Salad", testFood1.getName());
-        assertEquals(11.78, testFood1.getPrice());
+        assertEquals(11, testFood1.getPrice());
     }
 
     @Test
     public void testSetPrice() {
-        assertEquals(15.02, testFood2.getPrice());
+        assertEquals(15, testFood2.getPrice());
 
-        testFood2.setPrice(13.29);
-        assertEquals(13.29, testFood2.getPrice());
+        testFood2.setPrice(13);
+        assertEquals(13, testFood2.getPrice());
         assertEquals("Poke Bowl", testFood2.getName());
 
-        testFood3.setPrice(-5.8);
+        testFood3.setPrice(-5);
         assertEquals(999999999, testFood3.getPrice());
 
         testFood3.setPrice(0);
