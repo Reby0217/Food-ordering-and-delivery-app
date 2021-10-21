@@ -26,3 +26,5 @@ their time and making the food of the restaurant that only allows delivery avail
 - As a user, I want to be able to delete a food item from my food-to-order list.
 - As a user, I want to be able to see the total number of food on my food-to-order list.
 - As a user, I want to be able to see the total price of the food on my food-to-order list.
+- As a user, I want to be able to save my food-to-order list to file.
+- As a user, I want to be able to load my food-to-order list from file.
