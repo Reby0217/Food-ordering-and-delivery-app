@@ -15,6 +15,9 @@ public class OrderFoodApp {
     private Food salad;
     private Food onionRings;
     private Food pokeBowl;
+    private Food burger;
+    private Food coke;
+    private Food appleJuice;
     private Scanner input;
 
     //EFFECTS: runs the ordering food application
@@ -52,6 +55,9 @@ public class OrderFoodApp {
         salad = new Food("Salad", 11);
         onionRings = new Food("Onion Rings", 6);
         pokeBowl = new Food("Poke Bowl", 15);
+        burger = new Food("Burger", 13);
+        coke = new Food("Coke", 2);
+        appleJuice = new Food("Apple Juice",3);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -98,6 +104,12 @@ public class OrderFoodApp {
             foodToOrderList.addFood(onionRings);
         } else if (command.equals("p")) {
             foodToOrderList.addFood(pokeBowl);
+        } else if (command.equals("b")) {
+            foodToOrderList.addFood(burger);
+        } else if (command.equals("c")) {
+            foodToOrderList.addFood(coke);
+        } else if (command.equals("a")) {
+            foodToOrderList.addFood(appleJuice);
         } else {
             System.out.println("Invalid food option...\n");
         }
@@ -122,6 +134,12 @@ public class OrderFoodApp {
             foodToOrderList.removeFood(onionRings);
         } else if (command.equals("p")) {
             foodToOrderList.removeFood(pokeBowl);
+        } else if (command.equals("b")) {
+            foodToOrderList.removeFood(burger);
+        } else if (command.equals("c")) {
+            foodToOrderList.removeFood(coke);
+        } else if (command.equals("a")) {
+            foodToOrderList.removeFood(appleJuice);
         } else {
             System.out.println("Invalid food option...\n");
         }
@@ -133,6 +151,9 @@ public class OrderFoodApp {
         System.out.println("\ts -> " + salad.getName() + " ($" + salad.getPrice() + ")");
         System.out.println("\to -> " + onionRings.getName() + " ($" + onionRings.getPrice() + ")");
         System.out.println("\tp -> " + pokeBowl.getName() + " ($" + pokeBowl.getPrice() + ")");
+        System.out.println("\tb -> " + burger.getName() + " ($" + burger.getPrice() + ")");
+        System.out.println("\tc -> " + coke.getName() + " ($" + coke.getPrice() + ")");
+        System.out.println("\ta -> " + appleJuice.getName() + " ($" + appleJuice.getPrice() + ")");
     }
 
     //MODIFIES: this
