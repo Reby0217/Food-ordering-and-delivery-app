@@ -1,6 +1,10 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -10,7 +14,7 @@ import java.util.ArrayList;
 
 
 //Represents a list of food to be ordered with total food price, total number of food in the list, and delivery time
-public class FoodToOrderList {
+public class FoodToOrderList implements Writable {
     private ArrayList<Food> foodList;
     private int totalPrice;
     private int totalFoodNum;
@@ -107,4 +111,23 @@ public class FoodToOrderList {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("totalPrice", totalPrice);
+        json.put("totalFoodNum", totalFoodNum);
+        json.put("deliveredTime", deliveredTime);
+        json.put("foodList", foodListToJson());
+        return json;
+    }
+
+    //EFFECTS: return foodList in this food-to-order-list as a JSON array
+    private JSONArray foodListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food food : foodList) {
+            jsonArray.put(food.toJson());
+        }
+        return jsonArray;
+    }
 }

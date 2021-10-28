@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a food item having a name and a price
-public class Food {
+public class Food implements Writable {
     private String name;
     private int price;
 
@@ -39,5 +42,13 @@ public class Food {
         } else {
             this.price = 999999999;
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("price", price);
+        return json;
     }
 }
