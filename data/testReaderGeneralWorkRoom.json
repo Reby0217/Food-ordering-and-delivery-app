@@ -1,0 +1,16 @@
+{
+  "foodList": [
+    {
+      "name": "Burger",
+      "price": 13
+    },
+    {
+      "name": "Coke",
+      "price": 2
+    }
+  ],
+  "totalPrice": 15,
+  "totalFoodNum": 2,
+  "deliveredTime": "12:23"
+
+}

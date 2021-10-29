@@ -12,7 +12,6 @@ import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 
 
-
 //Represents a list of food to be ordered with total food price, total number of food in the list, and delivery time
 public class FoodToOrderList implements Writable {
     private ArrayList<Food> foodList;

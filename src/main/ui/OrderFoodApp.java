@@ -2,15 +2,24 @@ package ui;
 
 import model.Food;
 import model.FoodToOrderList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // This class references code from this repository
 // Link: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
+// This class references code from this repository
+// Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // Food ordering and delivery app
 public class OrderFoodApp {
+    private static final String JSON_STORE = "./data/foodToOrderList.json";
     private FoodToOrderList foodToOrderList;
     private Food salad;
     private Food onionRings;
@@ -19,33 +28,13 @@ public class OrderFoodApp {
     private Food coke;
     private Food appleJuice;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the ordering food application
-    public OrderFoodApp() {
-        runOrderFoodApp();
-    }
-
-    //MODIFIES: this
-    //EFFECTS: processes user input
-    private void runOrderFoodApp() {
-        boolean keepGoing = true;
-        String command = null;
-
+    public OrderFoodApp() throws FileNotFoundException {
         init();
-
-        while (keepGoing) {
-            displayMenu();
-            command = input.next();
-
-            if (command.equals("5")) {
-                keepGoing = false;
-            } else {
-                processCommand(command);
-            }
-        }
-
-        System.out.println("Have a good day! See you next time.");
-
+        runOrderFoodApp();
     }
 
     //MODIFIES: this
@@ -57,10 +46,36 @@ public class OrderFoodApp {
         pokeBowl = new Food("Poke Bowl", 15);
         burger = new Food("Burger", 13);
         coke = new Food("Coke", 2);
-        appleJuice = new Food("Apple Juice",3);
+        appleJuice = new Food("Apple Juice", 3);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
+
+
+    //MODIFIES: this
+    //EFFECTS: processes user input
+    private void runOrderFoodApp() {
+        boolean keepGoing = true;
+        String command = null;
+
+
+        while (keepGoing) {
+            displayMenu();
+            command = input.next();
+
+            if (command.equals("7")) {
+                keepGoing = false;
+            } else {
+                processCommand(command);
+            }
+        }
+
+        System.out.println("Have a good day! See you next time.");
+
+    }
+
 
     //EFFECTS: shows the menu of choices to user
     private void displayMenu() {
@@ -69,7 +84,9 @@ public class OrderFoodApp {
         System.out.println("\t[2] Remove a food item from your food-to-order list");
         System.out.println("\t[3] Set a delivered time");
         System.out.println("\t[4] View your current order summary");
-        System.out.println("\t[5] Quit the APP");
+        System.out.println("\t[5] Save food-to-order list to file");
+        System.out.println("\t[6] Load food-to-order list from file");
+        System.out.println("\t[7] Quit the APP");
     }
 
     //MODIFIES: this
@@ -83,6 +100,10 @@ public class OrderFoodApp {
             doSetTime();
         } else if (command.equals("4")) {
             doViewSummary();
+        } else if (command.equals("5")) {
+            saveFoodToOrderList();
+        } else if (command.equals("6")) {
+            loadFoodToOrderList();
         } else {
             System.out.println("Invalid selection...");
         }
@@ -192,6 +213,29 @@ public class OrderFoodApp {
             System.out.println("\t" + food.getName() + "($" + food.getPrice() + ")");
         }
         System.out.println("\r");
+    }
+
+    //EFFECTS: saves the food-to-order list to file
+    private void saveFoodToOrderList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(foodToOrderList);
+            jsonWriter.close();
+            System.out.println("Saved the food-to-order list to " + JSON_STORE + "successfully");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: loads food-to-order list from file
+    private void loadFoodToOrderList() {
+        try {
+            foodToOrderList = jsonReader.read();
+            System.out.println("Loaded the food-to-order list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     //EFFECTS: prints a separator line to make the console easier to read.

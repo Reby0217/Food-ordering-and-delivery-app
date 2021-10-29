@@ -1,0 +1,14 @@
+{
+    "totalFoodNum": 0,
+    "totalPrice": 0,
+    "foodList": [
+        {
+            "price": 1,
+            "name": "Apple"
+        },
+        {
+            "price": 15,
+            "name": "Poke Bowl"
+        }
+    ]
+}

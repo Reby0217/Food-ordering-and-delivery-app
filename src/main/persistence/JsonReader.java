@@ -16,6 +16,8 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.json.*;
+// This class references code from this repository
+// Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
 //Represents a reader that reads FoodToOrderList from JSON data stored in file
 public class JsonReader {
@@ -73,7 +75,5 @@ public class JsonReader {
         Food food = new Food(name, price);
         ftoList.addFood(food);
     }
-
-
 
 }
