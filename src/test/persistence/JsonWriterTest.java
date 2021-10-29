@@ -30,6 +30,7 @@ public class JsonWriterTest extends JsonTest {
     public void testWriterEmptyFoodToOrderList() {
         try {
             FoodToOrderList ftoList = new FoodToOrderList();
+            ftoList.setDeliveredTime("00:00");
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyFoodToOrderList.json");
             writer.open();
             writer.write(ftoList);
@@ -52,6 +53,10 @@ public class JsonWriterTest extends JsonTest {
             FoodToOrderList ftoList = new FoodToOrderList();
             ftoList.addFood(new Food("Apple", 1));
             ftoList.addFood(new Food("Poke Bowl", 15));
+            ftoList.setTotalPrice(16);
+            ftoList.setTotalFoodNum(2);
+            ftoList.setDeliveredTime("13:45");
+
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralFoodToOrderList");
             writer.open();
             writer.write(ftoList);
@@ -63,7 +68,6 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(2, foodList.size());
             assertEquals(2, ftoList.getTotalFoodNum());
             assertEquals(16, ftoList.getTotalPrice());
-            ftoList.setDeliveredTime("13:45");
             assertEquals("13:45", ftoList.getDeliveredTime());
             checkFood("Apple", 1, foodList.get(0));
             checkFood("Poke Bowl", 15, foodList.get(1));

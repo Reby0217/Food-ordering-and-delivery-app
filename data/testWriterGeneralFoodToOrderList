@@ -1,6 +1,6 @@
 {
-    "totalFoodNum": 0,
-    "totalPrice": 0,
+    "totalFoodNum": 2,
+    "totalPrice": 16,
     "foodList": [
         {
             "price": 1,
@@ -10,5 +10,6 @@
             "price": 15,
             "name": "Poke Bowl"
         }
-    ]
+    ],
+    "deliveredTime": "13:45"
 }

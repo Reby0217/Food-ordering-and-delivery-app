@@ -3,7 +3,10 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FoodToOrderListTest {
     private FoodToOrderList testList;
@@ -148,4 +151,17 @@ class FoodToOrderListTest {
         assertFalse(testList.isValidTime(invalidTime6));
 
     }
+
+    @Test
+    public void testSetTotalFoodNum() {
+        assertEquals(0, testList.setTotalFoodNum(0));
+        assertEquals(5, testList.setTotalFoodNum(5));
+    }
+
+    @Test
+    public void testSetTotalPrice() {
+        assertEquals(0, testList.setTotalPrice(0));
+        assertEquals(25, testList.setTotalPrice(25));
+    }
 }
+

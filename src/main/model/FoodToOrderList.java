@@ -52,15 +52,33 @@ public class FoodToOrderList implements Writable {
         return totalPrice;
     }
 
-    //REQUIRES: numOfFood >= 0
+    //REQUIRES: price >= 0
+    //MODIFIES: this
+    //EFFECTS: returns the totalPrice, which equals the price (int)
+    public int setTotalPrice(int price) {
+        totalPrice = price;
+        return totalPrice;
+    }
+
+    //REQUIRES: totalFoodNum >= 0
     //EFFECTS: returns the total number of food in the list
     public int getTotalFoodNum() {
+        totalFoodNum = setTotalFoodNum(size());
+        return totalFoodNum;
+    }
+
+    //REQUIRES: num >= 0
+    //MODIFIES: this
+    //EFFECTS: returns the totalFoodNum, which equals the given num (int)
+    public int setTotalFoodNum(int num) {
         totalFoodNum = 0;
-        for (Food food : foodList) {
-            totalFoodNum += 1;
+        for (int i = 0; i < num; i++) {
+            totalFoodNum = totalFoodNum + 1;
         }
         return totalFoodNum;
     }
+
+
 
     //EFFECTS: if the food is contained in the list, returns true. Otherwise, returns false
     public boolean contains(Food food) {

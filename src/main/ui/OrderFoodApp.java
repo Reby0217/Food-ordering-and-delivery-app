@@ -221,7 +221,7 @@ public class OrderFoodApp {
             jsonWriter.open();
             jsonWriter.write(foodToOrderList);
             jsonWriter.close();
-            System.out.println("Saved the food-to-order list to " + JSON_STORE + "successfully");
+            System.out.println("Saved the food-to-order list to " + JSON_STORE + " successfully!");
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }

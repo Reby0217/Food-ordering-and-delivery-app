@@ -51,8 +51,13 @@ public class JsonReader {
     private FoodToOrderList parseFoodToOrderList(JSONObject jsonObject) {
         int totalPrice = jsonObject.getInt("totalPrice");
         int totalFoodNum = jsonObject.getInt("totalFoodNum");
-        String deliveredTime = jsonObject.getString("deliveredTime");
         FoodToOrderList ftoList = new FoodToOrderList();
+        String deliveredTime = jsonObject.getString("deliveredTime");
+
+        ftoList.setTotalFoodNum(totalFoodNum);
+        ftoList.setDeliveredTime(deliveredTime);
+        ftoList.setTotalPrice(totalPrice);
+
         addFoodList(ftoList, jsonObject);
         return ftoList;
     }
