@@ -1,19 +1,6 @@
 {
     "totalFoodNum": 0,
     "totalPrice": 0,
-    "foodList": [
-        {
-            "price": 11,
-            "name": "Salad"
-        },
-        {
-            "price": 6,
-            "name": "Onion Rings"
-        },
-        {
-            "price": 3,
-            "name": "Apple Juice"
-        }
-    ],
-    "deliveredTime": "12:56"
+    "foodList": [],
+    "deliveredTime": "10:56"
 }

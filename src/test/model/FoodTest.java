@@ -53,6 +53,37 @@ public class FoodTest {
         assertEquals(0, testFood3.getPrice());
     }
 
+    @Test
+    public void testEquals() {
+
+        assertFalse(testFood1.equals(testFood2));
+
+        Food testFood4 = new Food("Salad", 2);
+
+        assertFalse(testFood1.equals(testFood4));
+
+        Food testFood5 = new Food("Noodle", 11);
+        assertFalse(testFood1.equals(testFood5));
+
+        Food testFood6 = new Food("Salad", 11);
+        assertTrue(testFood1.equals(testFood6));
+
+        String str = "ABC";
+        assertFalse(testFood1.equals(str));
+
+        assertFalse(testFood1.equals(null));
+
+    }
+
+    @Test
+    public void testHashCode() {
+        Food testFood6 = new Food("Salad", 11);
+        assertEquals(testFood1.hashCode(), testFood6.hashCode());
+        assertNotEquals(testFood1.hashCode(), testFood2.hashCode());
+
+    }
+
+
 }
 
 
