@@ -33,6 +33,7 @@ public class JsonReader {
     public FoodToOrderList read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+
         return parseFoodToOrderList(jsonObject);
     }
 
@@ -46,17 +47,19 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-
+    //REQUIRES: deliveredTime is set (not null)
     //EFFECTS: parses food-to-order-list from JSON object and returns it
     private FoodToOrderList parseFoodToOrderList(JSONObject jsonObject) {
         int totalPrice = jsonObject.getInt("totalPrice");
         int totalFoodNum = jsonObject.getInt("totalFoodNum");
-        FoodToOrderList ftoList = new FoodToOrderList();
         String deliveredTime = jsonObject.getString("deliveredTime");
+        FoodToOrderList ftoList = new FoodToOrderList();
 
         ftoList.setTotalFoodNum(totalFoodNum);
-        ftoList.setDeliveredTime(deliveredTime);
+
         ftoList.setTotalPrice(totalPrice);
+
+        ftoList.setDeliveredTime(deliveredTime);
 
         addFoodList(ftoList, jsonObject);
         return ftoList;

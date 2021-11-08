@@ -47,6 +47,7 @@ public class OrderFoodApp {
         burger = new Food("Burger", 13);
         coke = new Food("Coke", 2);
         appleJuice = new Food("Apple Juice", 3);
+        foodToOrderList.setDeliveredTime("00:00");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         jsonWriter = new JsonWriter(JSON_STORE);

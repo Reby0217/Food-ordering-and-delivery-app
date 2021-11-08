@@ -100,7 +100,7 @@ public class FoodToOrderList implements Writable {
     }
 
     //MODIFIES: this
-    //EFFECTS: If the time is invalid, sets delivered time as "00:00" by default time
+    //EFFECTS: If the time is invalid or unset, sets delivered time as "00:00" by default time
     //         Otherwise, sets delivered time to be the time in hh:mm pattern.
     public void setDeliveredTime(String time) {
         if (!isValidTime(time)) {
