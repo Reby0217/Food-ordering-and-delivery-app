@@ -79,7 +79,6 @@ public class FoodToOrderList implements Writable {
     }
 
 
-
     //EFFECTS: if the food is contained in the list, returns true. Otherwise, returns false
     public boolean contains(Food food) {
         return foodList.contains(food);
@@ -147,4 +146,6 @@ public class FoodToOrderList implements Writable {
         }
         return jsonArray;
     }
+
+
 }

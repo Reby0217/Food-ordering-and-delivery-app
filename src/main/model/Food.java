@@ -51,4 +51,28 @@ public class Food implements Writable {
         json.put("price", price);
         return json;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Food food = (Food) o;
+
+        if (price != food.price) {
+            return false;
+        }
+        return name.equals(food.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + price;
+        return result;
+    }
 }
