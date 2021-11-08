@@ -54,7 +54,6 @@ public class OrderFoodApp {
         jsonReader = new JsonReader(JSON_STORE);
     }
 
-
     //MODIFIES: this
     //EFFECTS: processes user input
     private void runOrderFoodApp() {
