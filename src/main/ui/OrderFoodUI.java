@@ -20,10 +20,10 @@ public class OrderFoodUI extends JFrame implements ActionListener {
     private static final int XPOSITION = 390;
     private static final int WIDTH = 250;
     private static final int HEIGHT = 50;
-    private JButton orderButton;
-    private JButton quitButton;
-    private JButton saveButton;
-    private JButton loadButton;
+    private String orderButton;
+    private String quitButton;
+    private String saveButton;
+    private String loadButton;
     private FoodToOrderListUI foodToOrderListUI;
     private ImageIcon backgroundImageIcon;
     private JLabel selectionLabel;
@@ -66,10 +66,10 @@ public class OrderFoodUI extends JFrame implements ActionListener {
     private void init() {
         ftoList = new FoodToOrderList();
         ftoList.setDeliveredTime("00:00");
-        orderButton = new JButton("Start New Order");
-        saveButton = new JButton("Save Your Order");
-        loadButton = new JButton("Load Your Saved Order");
-        quitButton = new JButton("Quit the APP");
+        orderButton = "Start New Order";
+        saveButton = "Save Your Order";
+        loadButton = "Load Your Saved Order";
+        quitButton = "Quit the APP";
         selectionLabel = new JLabel("Please select from: ", JLabel.CENTER);
         backgroundImageIcon = new ImageIcon("./images/background1.png");
         backgroundLabel = new JLabel("", backgroundImageIcon, JLabel.CENTER);
@@ -91,12 +91,13 @@ public class OrderFoodUI extends JFrame implements ActionListener {
 
     //EFFECTS: sets the font, foreground, action command, and action listener of
     //         a button at the given y-position
-    private void setButton(JButton button, int yposition) {
+    private void setButton(String buttonText, int yposition) {
+        JButton button = new JButton(buttonText);
         button.setBounds(XPOSITION, yposition, WIDTH, HEIGHT);
         button.setFont(new Font("Arial", Font.PLAIN, 17));
         add(button);
         button.setForeground(Color.BLACK);
-        button.setActionCommand(button.getText());
+        button.setActionCommand(buttonText);
         button.addActionListener(this);
     }
 
@@ -109,16 +110,15 @@ public class OrderFoodUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        foodToOrderListUI = new FoodToOrderListUI(ftoList);
-        if (e.getActionCommand().equals("Start new order")) {
+
+        if (e.getActionCommand().equals(quitButton)) {
+            System.exit(0);
+        } else if (e.getActionCommand().equals(orderButton)) {
             new FoodToOrderListUI(ftoList);
-        } else if (e.getActionCommand().equals("Load your saved order")) {
-            if (foodToOrderListUI != null) {
-                foodToOrderListUI.dispose();
-            }
+        } else if (e.getActionCommand().equals(loadButton)) {
             loadFoodToOrderList();
             foodToOrderListUI = new FoodToOrderListUI(ftoList);
-        } else if (e.getActionCommand().equals("Save your order")) {
+        } else if (e.getActionCommand().equals(saveButton)) {
             saveFoodToOrderList();
         }
 

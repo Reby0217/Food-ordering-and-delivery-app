@@ -17,6 +17,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     private DefaultTableModel tableModel;
     private JTable table;
     private String addFoodButton = "Add Food";
+    private String removeFoodButton = "Remove Food";
     private String setTimeButton = "Set Delivered Time";
 
 
@@ -25,7 +26,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
 
         this.ftoList = ftoList;
 
-        setPreferredSize(new Dimension(650, 650));
+        setPreferredSize(new Dimension(500, 650));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(null);
 
@@ -51,7 +52,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
         int index = 1;
         for (int i = 0; i < ftoList.size(); i++) {
             Food food = ftoList.getFoodList().get(i);
-            Object[] row = new Object[] {
+            Object[] row = new Object[]{
                     index + 1,
                     food.getName(),
                     food.getPrice()
@@ -75,55 +76,62 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     //EFFECTS: add buttons on the main window
     private void addButtons() {
         setButton(addFoodButton);
+        setButton(removeFoodButton);
         setButton(setTimeButton);
     }
 
     //EFFECTS: sets the font, foreground, action command, and action listener of a button
     private void setButton(String str) {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(3, 1));
         JButton button = new JButton(str);
-        button.setFont(new Font("Arial", Font.PLAIN, 17));
-        add(button);
+        //button.setFont(new Font("Arial", Font.PLAIN, 17));
+        buttonPanel.add(button);
+        add(buttonPanel, BorderLayout.SOUTH);
         button.setForeground(Color.BLACK);
         button.setActionCommand(str);
         button.addActionListener(this);
     }
 
+
+    // This method references code from this website
+    // Link: https://stackoverflow.com/a/12589611
     //EFFECTS: displays the order summary
     private void displayOrderSummary() {
-        showTotalNum();
-        showTotalPrice();
-        showDeliveredTime();
-    }
+        Box box = Box.createVerticalBox();
 
-    //EFFECTS: shows the total number of food in the list
-    private void showTotalNum() {
+        //shows the total number of food in the list
         int totalNumber = ftoList.getTotalFoodNum();
         JLabel totalNumLabel = new JLabel("Total number of food: " + totalNumber + "\n");
-        totalNumLabel.setBounds(500,500,500,20);
-        add(totalNumLabel);
-    }
+        totalNumLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        box.add(totalNumLabel);
 
-    //EFFECTS: shows the total price of all the food in the list
-    private void showTotalPrice() {
+        //shows the total price of all the food in the list
         int totalPrice = ftoList.getTotalPrice();
         JLabel totalPriceLabel = new JLabel("Total price of food: $" + totalPrice + "\n");
-        totalPriceLabel.setBounds(500,600,400,20);
-        add(totalPriceLabel);
-    }
+        totalPriceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        box.add(totalPriceLabel);
 
-    //EFFECTS: shows the delivered time of the order
-    private void showDeliveredTime() {
+        //shows the delivered time of the order
         String deliveredTime = ftoList.getDeliveredTime();
         JLabel deliveredTimeLabel = new JLabel("Delivered time in 24-hour clock: " + deliveredTime + "\n");
-        deliveredTimeLabel.setBounds(500,700,500,20);
-        add(deliveredTimeLabel);
-    }
+        deliveredTimeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        box.add(deliveredTimeLabel);
 
+        add(box);
+
+    }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getActionCommand().equals(addFoodButton)) {
+            new AddFoodUI(this, ftoList);
+        } else if (e.getActionCommand().equals(setTimeButton)) {
+            new SetTimeUI(this, ftoList);
+        } else if (e.getActionCommand().equals(removeFoodButton)) {
+            new RemoveFoodUI(this, ftoList);
+        }
 
         dispose();
         new FoodToOrderListUI(ftoList);
