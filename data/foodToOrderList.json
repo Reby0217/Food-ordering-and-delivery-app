@@ -1,6 +1,19 @@
 {
-    "totalFoodNum": 0,
-    "totalPrice": 0,
-    "foodList": [],
+    "totalFoodNum": 3,
+    "totalPrice": 29,
+    "foodList": [
+        {
+            "price": 13,
+            "name": "Burger"
+        },
+        {
+            "price": 3,
+            "name": "Apple Juice"
+        },
+        {
+            "price": 13,
+            "name": "Burger"
+        }
+    ],
     "deliveredTime": "00:00"
 }

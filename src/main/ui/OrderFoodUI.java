@@ -47,7 +47,7 @@ public class OrderFoodUI extends JFrame implements ActionListener {
         selectionLabel.setBounds(320, 20, 410, 100);
         add(selectionLabel);
         selectionLabel.setForeground(Color.DARK_GRAY);
-        selectionLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        selectionLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
 
         addButtons();
 
@@ -82,9 +82,9 @@ public class OrderFoodUI extends JFrame implements ActionListener {
 
     //EFFECTS: add buttons on the main window
     private void addButtons() {
-        setButton(orderButton, 110);
-        setButton(saveButton, 170);
-        setButton(loadButton, 230);
+        setButton(loadButton, 110);
+        setButton(orderButton, 170);
+        setButton(saveButton, 230);
         setButton(quitButton, 290);
 
     }
@@ -94,7 +94,7 @@ public class OrderFoodUI extends JFrame implements ActionListener {
     private void setButton(String buttonText, int yposition) {
         JButton button = new JButton(buttonText);
         button.setBounds(XPOSITION, yposition, WIDTH, HEIGHT);
-        button.setFont(new Font("Arial", Font.PLAIN, 17));
+        button.setFont(new Font("SansSerif", Font.PLAIN, 17));
         add(button);
         button.setForeground(Color.BLACK);
         button.setActionCommand(buttonText);
@@ -114,12 +114,16 @@ public class OrderFoodUI extends JFrame implements ActionListener {
         if (e.getActionCommand().equals(quitButton)) {
             System.exit(0);
         } else if (e.getActionCommand().equals(orderButton)) {
+            this.ftoList = new FoodToOrderList();
+            //set default time to be "00:00"
+            ftoList.setDeliveredTime("00:00");
             new FoodToOrderListUI(ftoList);
         } else if (e.getActionCommand().equals(loadButton)) {
             loadFoodToOrderList();
             foodToOrderListUI = new FoodToOrderListUI(ftoList);
         } else if (e.getActionCommand().equals(saveButton)) {
             saveFoodToOrderList();
+            JOptionPane.showMessageDialog(null,"Save your current order successfully");
         }
 
     }

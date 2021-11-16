@@ -42,6 +42,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         pack();
         setVisible(true);
+        setResizable(false);
     }
 
     //EFFECTS: displays the table of the list of food including
@@ -49,11 +50,9 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     private void setFoodToOrderListTable(FoodToOrderList ftoList) {
         createEmptyFoodToOrderListTable();
 
-        int index = 1;
         for (int i = 0; i < ftoList.size(); i++) {
             Food food = ftoList.getFoodList().get(i);
             Object[] row = new Object[]{
-                    index + 1,
                     food.getName(),
                     food.getPrice()
             };
@@ -65,29 +64,27 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     //EFFECTS: creates an empty food-to-order list table with column names
     private void createEmptyFoodToOrderListTable() {
         final String[] columnNames = new String[]{
-                "Index", "Name", "Price"
+                "Name", "Price ($)"
         };
 
         tableModel = new DefaultTableModel(null, columnNames) {
         };
         table = new JTable(tableModel);
+        table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 16));
+        table.setFont(new Font("SansSerif", Font.PLAIN, 14));
     }
 
-    //EFFECTS: add buttons on the main window
+    //EFFECTS: add buttons on the food-to-order list window
     private void addButtons() {
         setButton(addFoodButton);
         setButton(removeFoodButton);
         setButton(setTimeButton);
     }
 
-    //EFFECTS: sets the font, foreground, action command, and action listener of a button
+    //EFFECTS: sets the foreground, action command, and action listener of a button
     private void setButton(String str) {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 1));
         JButton button = new JButton(str);
-        //button.setFont(new Font("Arial", Font.PLAIN, 17));
-        buttonPanel.add(button);
-        add(buttonPanel, BorderLayout.SOUTH);
+        add(button);
         button.setForeground(Color.BLACK);
         button.setActionCommand(str);
         button.addActionListener(this);
@@ -130,11 +127,25 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals(setTimeButton)) {
             new SetTimeUI(this, ftoList);
         } else if (e.getActionCommand().equals(removeFoodButton)) {
-            new RemoveFoodUI(this, ftoList);
+            deleteSelectedRowFromTable();
         }
 
-        dispose();
-        new FoodToOrderListUI(ftoList);
+    }
 
+
+    // This method references code from this website
+    // Link: https://stackoverflow.com/a/23465377
+    //MODIFIES: this
+    //EFFECTS: remove selected row from the table
+    public void deleteSelectedRowFromTable() {
+        int getSelectedRowForDeletion = table.getSelectedRow();
+        if (getSelectedRowForDeletion >= 0) {
+            tableModel.removeRow(getSelectedRowForDeletion);
+            ftoList.removeFood(ftoList.getFoodList().get(getSelectedRowForDeletion));
+            JOptionPane.showMessageDialog(null, "Remove Successfully");
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Unable to remove. Please select a food item in the table");
+        }
     }
 }
