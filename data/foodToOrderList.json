@@ -1,6 +1,19 @@
 {
-    "totalFoodNum": 0,
-    "totalPrice": 0,
-    "foodList": [],
+    "totalFoodNum": 3,
+    "totalPrice": 28,
+    "foodList": [
+        {
+            "price": 11,
+            "name": "Salad"
+        },
+        {
+            "price": 15,
+            "name": "Poke Bowl"
+        },
+        {
+            "price": 2,
+            "name": "Coke"
+        }
+    ],
     "deliveredTime": "00:00"
 }
