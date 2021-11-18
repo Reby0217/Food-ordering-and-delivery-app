@@ -143,6 +143,8 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
         if (getSelectedRowForDeletion >= 0) {
             tableModel.removeRow(getSelectedRowForDeletion);
             ftoList.removeFood(ftoList.getFoodList().get(getSelectedRowForDeletion));
+            dispose();
+            new FoodToOrderListUI(ftoList);
             JOptionPane.showMessageDialog(null, "Remove Successfully");
         } else {
             JOptionPane.showMessageDialog(null,
