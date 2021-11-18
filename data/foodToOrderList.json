@@ -1,23 +1,27 @@
 {
-    "totalFoodNum": 4,
-    "totalPrice": 33,
+    "totalFoodNum": 5,
+    "totalPrice": 48,
     "foodList": [
         {
-            "price": 13,
-            "name": "Burger"
+            "price": 15,
+            "name": "Poke Bowl"
         },
         {
             "price": 6,
             "name": "Onion Rings"
         },
         {
+            "price": 11,
+            "name": "Salad"
+        },
+        {
             "price": 3,
             "name": "Apple Juice"
         },
         {
-            "price": 11,
-            "name": "Salad"
+            "price": 13,
+            "name": "Burger"
         }
     ],
-    "deliveredTime": "13:58"
+    "deliveredTime": "06:47"
 }

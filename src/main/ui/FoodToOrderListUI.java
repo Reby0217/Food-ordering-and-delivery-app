@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 // Represents visual user interface for food-to-order list (including list of food,
 // total price, total number of food and delivered time)
-public class FoodToOrderListGUI extends JFrame implements ActionListener {
+public class FoodToOrderListUI extends JFrame implements ActionListener {
     private FoodToOrderList ftoList;
     private DefaultTableModel tableModel;
     private JTable table;
@@ -22,7 +22,7 @@ public class FoodToOrderListGUI extends JFrame implements ActionListener {
 
 
     //EFFECTS: sets up the food-to-order list window
-    public FoodToOrderListGUI(FoodToOrderList ftoList) {
+    public FoodToOrderListUI(FoodToOrderList ftoList) {
 
         this.ftoList = ftoList;
 
@@ -50,9 +50,10 @@ public class FoodToOrderListGUI extends JFrame implements ActionListener {
     private void setFoodToOrderListTable(FoodToOrderList ftoList) {
         createEmptyFoodToOrderListTable();
 
-        for (int i = 0; i < ftoList.size(); i++) {
-            Food food = ftoList.getFoodList().get(i);
+        for (int index = 0; index < ftoList.size(); index++) {
+            Food food = ftoList.getFoodList().get(index);
             Object[] row = new Object[]{
+                    index + 1,
                     food.getName(),
                     food.getPrice()
             };
@@ -64,12 +65,13 @@ public class FoodToOrderListGUI extends JFrame implements ActionListener {
     //EFFECTS: creates an empty food-to-order list table with column names
     private void createEmptyFoodToOrderListTable() {
         final String[] columnNames = new String[]{
-                "Name", "Price ($)"
+                "Index","Name", "Price ($)"
         };
 
         tableModel = new DefaultTableModel(null, columnNames) {
         };
         table = new JTable(tableModel);
+        table.setRowHeight(22);
         table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 16));
         table.setFont(new Font("SansSerif", Font.PLAIN, 14));
     }
@@ -124,9 +126,9 @@ public class FoodToOrderListGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(addFoodButton)) {
-            new AddFoodGUI(this, ftoList);
+            new AddFoodUI(this, ftoList);
         } else if (e.getActionCommand().equals(setTimeButton)) {
-            new SetTimeGUI(this, ftoList);
+            new SetTimeUI(this, ftoList);
         } else if (e.getActionCommand().equals(removeFoodButton)) {
             deleteSelectedRowFromTable();
         }
@@ -144,7 +146,7 @@ public class FoodToOrderListGUI extends JFrame implements ActionListener {
             tableModel.removeRow(getSelectedRowForDeletion);
             ftoList.removeFood(ftoList.getFoodList().get(getSelectedRowForDeletion));
             dispose();
-            new FoodToOrderListGUI(ftoList);
+            new FoodToOrderListUI(ftoList);
             JOptionPane.showMessageDialog(null, "Remove Successfully");
         } else {
             JOptionPane.showMessageDialog(null,

@@ -11,8 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // Represents the visual adding food user interface
-public class AddFoodGUI extends JFrame implements ActionListener {
-    private FoodToOrderListGUI foodToOrderListGUI;
+public class AddFoodUI extends JFrame implements ActionListener {
+    private FoodToOrderListUI foodToOrderListUI;
     private FoodToOrderList ftoList;
     private JLabel label;
     private JLabel backgroundLabel;
@@ -28,10 +28,10 @@ public class AddFoodGUI extends JFrame implements ActionListener {
 
 
     //EFFECTS: sets up the add-food window
-    public AddFoodGUI(FoodToOrderListGUI foodToOrderListGUI, FoodToOrderList ftoList) {
+    public AddFoodUI(FoodToOrderListUI foodToOrderListUI, FoodToOrderList ftoList) {
         super("Add Food Window");
         this.ftoList = ftoList;
-        this.foodToOrderListGUI = foodToOrderListGUI;
+        this.foodToOrderListUI = foodToOrderListUI;
 
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setPreferredSize(new Dimension(618, 684));
@@ -110,8 +110,8 @@ public class AddFoodGUI extends JFrame implements ActionListener {
         }
 
         JOptionPane.showMessageDialog(null, "Add Food Successfully");
-        foodToOrderListGUI.dispose();
-        foodToOrderListGUI = new FoodToOrderListGUI(ftoList);
+        foodToOrderListUI.dispose();
+        foodToOrderListUI = new FoodToOrderListUI(ftoList);
         dispose();
     }
 }
