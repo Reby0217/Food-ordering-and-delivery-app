@@ -9,17 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //Represents the visual setting time user interface
-public class SetTimeUI extends JFrame implements ActionListener {
+public class SetTimeGUI extends JFrame implements ActionListener {
     private FoodToOrderList ftoList;
-    private FoodToOrderListUI foodToOrderListUI;
+    private FoodToOrderListGUI foodToOrderListGUI;
     private JTextField timeField;
     private String setTimeButtonText = "Set";
 
     //EFFECTS: sets up the setting delivered time window
-    public SetTimeUI(FoodToOrderListUI foodToOrderListUI, FoodToOrderList ftoList) {
+    public SetTimeGUI(FoodToOrderListGUI foodToOrderListGUI, FoodToOrderList ftoList) {
         super("Set Delivered Time Window");
         this.ftoList = ftoList;
-        this.foodToOrderListUI = foodToOrderListUI;
+        this.foodToOrderListGUI = foodToOrderListGUI;
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(750, 280));
@@ -67,8 +67,8 @@ public class SetTimeUI extends JFrame implements ActionListener {
                 ftoList.setDeliveredTime(deliveredTime);
             }
 
-            foodToOrderListUI.dispose();
-            new FoodToOrderListUI(ftoList);
+            foodToOrderListGUI.dispose();
+            new FoodToOrderListGUI(ftoList);
             dispose();
         }
     }

@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 // Represents the application's main window frame
-public class OrderFoodMainUI extends JFrame implements ActionListener {
+public class OrderFoodMainGUI extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/foodToOrderList.json";
     private FoodToOrderList ftoList;
     private static final int X_POSITION = 390;
@@ -24,7 +24,7 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     private String quitButton;
     private String saveButton;
     private String loadButton;
-    private FoodToOrderListUI foodToOrderListUI;
+    private FoodToOrderListGUI foodToOrderListGUI;
     private ImageIcon backgroundImageIcon;
     private JLabel selectionLabel;
     private JLabel backgroundLabel;
@@ -35,7 +35,7 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     // This method references code from this website
     // Link: https://stackoverflow.com/a/6578266
     //EFFECTS: sets up the order-food main window
-    public OrderFoodMainUI() {
+    public OrderFoodMainGUI() {
         super("Order Food Application");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(702, 856));
@@ -118,10 +118,10 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
             this.ftoList = new FoodToOrderList();
             //set default time to be "00:00"
             ftoList.setDeliveredTime("00:00");
-            new FoodToOrderListUI(ftoList);
+            new FoodToOrderListGUI(ftoList);
         } else if (e.getActionCommand().equals(loadButton)) {
             loadFoodToOrderList();
-            foodToOrderListUI = new FoodToOrderListUI(ftoList);
+            foodToOrderListGUI = new FoodToOrderListGUI(ftoList);
         } else if (e.getActionCommand().equals(saveButton)) {
             saveFoodToOrderList();
             JOptionPane.showMessageDialog(null, "Save your current order successfully");
@@ -154,7 +154,7 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
 
     // starts the order-food main ui
     public static void main(String[] args) {
-        new OrderFoodMainUI();
+        new OrderFoodMainGUI();
     }
 }
 
