@@ -74,7 +74,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
         table.setFont(new Font("SansSerif", Font.PLAIN, 14));
     }
 
-    //EFFECTS: add buttons on the food-to-order list window
+    //EFFECTS: adds buttons on the food-to-order list window
     private void addButtons() {
         setButton(addFoodButton);
         setButton(removeFoodButton);
@@ -93,7 +93,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
 
     // This method references code from this website
     // Link: https://stackoverflow.com/a/12589611
-    //EFFECTS: displays the order summary
+    //EFFECTS: displays the order summary on the food-to-order list window
     private void displayOrderSummary() {
         Box box = Box.createVerticalBox();
 
@@ -120,6 +120,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     }
 
 
+    //EFFECTS: acts correspondingly when a button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(addFoodButton)) {
@@ -136,7 +137,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     // This method references code from this website
     // Link: https://stackoverflow.com/a/23465377
     //MODIFIES: this
-    //EFFECTS: remove selected row from the table
+    //EFFECTS: removes selected row from the table
     public void deleteSelectedRowFromTable() {
         int getSelectedRowForDeletion = table.getSelectedRow();
         if (getSelectedRowForDeletion >= 0) {

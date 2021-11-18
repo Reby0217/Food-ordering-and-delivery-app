@@ -27,7 +27,7 @@ public class AddFoodUI extends JFrame implements ActionListener {
     private final String addAppleJuiceButtonText = "Apple Juice ($3)";
 
 
-    //EFFECTS: sets up the adding food window
+    //EFFECTS: sets up the add-food window
     public AddFoodUI(FoodToOrderListUI foodToOrderListUI, FoodToOrderList ftoList) {
         super("Add Food Window");
         this.ftoList = ftoList;
@@ -54,7 +54,7 @@ public class AddFoodUI extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    //EFFECTS: add buttons on the add-food window
+    //EFFECTS: adds buttons on the add-food window
     private void addButtons() {
         setButton(addSaladButtonText, 170);
         setButton(addOnionRingsButtonText, 220);
@@ -78,7 +78,7 @@ public class AddFoodUI extends JFrame implements ActionListener {
         button.addActionListener(this);
     }
 
-    //EFFECTS: set the background image of the main window
+    //EFFECTS: sets the background image of the add-food window
     private void setBackgroundImage() {
         ImageIcon imageIcon = new ImageIcon("./images/background2.png");
         backgroundLabel = new JLabel("", imageIcon, JLabel.CENTER);
@@ -86,6 +86,7 @@ public class AddFoodUI extends JFrame implements ActionListener {
         add(backgroundLabel);
     }
 
+    //EFFECTS: acts correspondingly when a button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
         Food salad = new Food("Salad", 11);

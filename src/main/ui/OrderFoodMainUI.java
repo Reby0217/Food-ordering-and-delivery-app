@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 // Represents the application's main window frame
-public class OrderFoodUI extends JFrame implements ActionListener {
+public class OrderFoodMainUI extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/foodToOrderList.json";
     private FoodToOrderList ftoList;
     private static final int X_POSITION = 390;
@@ -34,8 +34,8 @@ public class OrderFoodUI extends JFrame implements ActionListener {
 
     // This method references code from this website
     // Link: https://stackoverflow.com/a/6578266
-    //EFFECTS: sets up the order food window
-    public OrderFoodUI() {
+    //EFFECTS: sets up the order-food main window
+    public OrderFoodMainUI() {
         super("Order Food Application");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(702, 856));
@@ -80,7 +80,7 @@ public class OrderFoodUI extends JFrame implements ActionListener {
     }
 
 
-    //EFFECTS: add buttons on the main window
+    //EFFECTS: adds buttons on the order-food main window
     private void addButtons() {
         setButton(loadButton, 110);
         setButton(orderButton, 170);
@@ -101,13 +101,14 @@ public class OrderFoodUI extends JFrame implements ActionListener {
         button.addActionListener(this);
     }
 
-    //EFFECTS: set the background image of the main window
+    //EFFECTS: sets the background image of the main window
     private void setBackgroundImage() {
         backgroundLabel.setBounds(0, 0, 702, 856);
         add(backgroundLabel);
     }
 
 
+    //EFFECTS: acts correspondingly when a button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -151,9 +152,9 @@ public class OrderFoodUI extends JFrame implements ActionListener {
         }
     }
 
-    // starts the APP
+    // starts the order-food main ui
     public static void main(String[] args) {
-        new OrderFoodUI();
+        new OrderFoodMainUI();
     }
 }
 

@@ -43,11 +43,11 @@ public class SetTimeUI extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    //EFFECTS: add a button on the set-time window with set
+    //EFFECTS: adds a button on the set-time window with set
     //         font, foreground, action command, and action listener of
     private void addButton() {
         JButton finishButton = new JButton(setTimeButtonText);
-        finishButton.setBounds(320, 210, 100, 20);
+        finishButton.setBounds(320, 210, 100, 30);
         add(finishButton);
         finishButton.setFont(new Font("Monospaced", Font.PLAIN, 17));
         finishButton.setActionCommand(setTimeButtonText);
@@ -56,6 +56,7 @@ public class SetTimeUI extends JFrame implements ActionListener {
     }
 
 
+    //EFFECTS: acts correspondingly when a button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(setTimeButtonText)) {
