@@ -16,15 +16,15 @@ public class AddFoodUI extends JFrame implements ActionListener {
     private FoodToOrderList ftoList;
     private JLabel label;
     private JLabel backgroundLabel;
-    private static final int XPOSITION = 200;
+    private static final int X_POSITION = 200;
     private static final int WIDTH = 200;
     private static final int HEIGHT = 50;
-    private String addSaladButtonText = "Salad ($11)";
-    private String addOnionRingsButtonText = "Onion Rings ($6)";
-    private String addPokeBowlButtonText = "Poke Bowl ($15)";
-    private String addBurgerButtonText = "Burger ($13)";
-    private String addCokeButtonText = "Coke ($2)";
-    private String addAppleJuiceButtonText = "Apple Juice ($3)";
+    private final String addSaladButtonText = "Salad ($11)";
+    private final String addOnionRingsButtonText = "Onion Rings ($6)";
+    private final String addPokeBowlButtonText = "Poke Bowl ($15)";
+    private final String addBurgerButtonText = "Burger ($13)";
+    private final String addCokeButtonText = "Coke ($2)";
+    private final String addAppleJuiceButtonText = "Apple Juice ($3)";
 
 
     //EFFECTS: sets up the adding food window
@@ -37,6 +37,7 @@ public class AddFoodUI extends JFrame implements ActionListener {
         setPreferredSize(new Dimension(618, 684));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(null);
+
 
         label = new JLabel("Please add the food you want", JLabel.CENTER);
         label.setBounds(110, 120, 400, 25);
@@ -53,7 +54,7 @@ public class AddFoodUI extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    //EFFECTS: add buttons on the add food window
+    //EFFECTS: add buttons on the add-food window
     private void addButtons() {
         setButton(addSaladButtonText, 170);
         setButton(addOnionRingsButtonText, 220);
@@ -67,9 +68,9 @@ public class AddFoodUI extends JFrame implements ActionListener {
 
     //EFFECTS: adds a button at the given y-position with set
     //         font, foreground, action command, and action listener of
-    private void setButton(String buttonText, int yposition) {
+    private void setButton(String buttonText, int y) {
         JButton button = new JButton(buttonText);
-        button.setBounds(XPOSITION, yposition, WIDTH, HEIGHT);
+        button.setBounds(X_POSITION, y, WIDTH, HEIGHT);
         add(button);
         button.setFont(new Font("Monospaced", Font.PLAIN, 17));
         button.setForeground(Color.BLACK);

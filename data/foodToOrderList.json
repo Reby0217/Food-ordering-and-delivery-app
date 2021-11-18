@@ -1,19 +1,19 @@
 {
     "totalFoodNum": 3,
-    "totalPrice": 29,
+    "totalPrice": 20,
     "foodList": [
         {
-            "price": 13,
-            "name": "Burger"
+            "price": 2,
+            "name": "Coke"
         },
         {
             "price": 3,
             "name": "Apple Juice"
         },
         {
-            "price": 13,
-            "name": "Burger"
+            "price": 15,
+            "name": "Poke Bowl"
         }
     ],
-    "deliveredTime": "00:00"
+    "deliveredTime": "11:35"
 }

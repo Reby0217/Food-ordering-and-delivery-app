@@ -17,7 +17,7 @@ import java.io.IOException;
 public class OrderFoodUI extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/foodToOrderList.json";
     private FoodToOrderList ftoList;
-    private static final int XPOSITION = 390;
+    private static final int X_POSITION = 390;
     private static final int WIDTH = 250;
     private static final int HEIGHT = 50;
     private String orderButton;
@@ -91,9 +91,9 @@ public class OrderFoodUI extends JFrame implements ActionListener {
 
     //EFFECTS: sets the font, foreground, action command, and action listener of
     //         a button at the given y-position
-    private void setButton(String buttonText, int yposition) {
+    private void setButton(String buttonText, int y) {
         JButton button = new JButton(buttonText);
-        button.setBounds(XPOSITION, yposition, WIDTH, HEIGHT);
+        button.setBounds(X_POSITION, y, WIDTH, HEIGHT);
         button.setFont(new Font("SansSerif", Font.PLAIN, 17));
         add(button);
         button.setForeground(Color.BLACK);
@@ -123,7 +123,7 @@ public class OrderFoodUI extends JFrame implements ActionListener {
             foodToOrderListUI = new FoodToOrderListUI(ftoList);
         } else if (e.getActionCommand().equals(saveButton)) {
             saveFoodToOrderList();
-            JOptionPane.showMessageDialog(null,"Save your current order successfully");
+            JOptionPane.showMessageDialog(null, "Save your current order successfully");
         }
 
     }
