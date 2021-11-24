@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 // Represents visual user interface for food-to-order list (including list of food,
 // total price, total number of food and delivered time)
-public class FoodToOrderListUI extends JFrame implements ActionListener {
+public class FoodToOrderListGUI extends JFrame implements ActionListener {
     private FoodToOrderList ftoList;
     private DefaultTableModel tableModel;
     private JTable table;
@@ -22,7 +22,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
 
 
     //EFFECTS: sets up the food-to-order list window
-    public FoodToOrderListUI(FoodToOrderList ftoList) {
+    public FoodToOrderListGUI(FoodToOrderList ftoList) {
 
         this.ftoList = ftoList;
 
@@ -65,7 +65,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     //EFFECTS: creates an empty food-to-order list table with column names
     private void createEmptyFoodToOrderListTable() {
         final String[] columnNames = new String[]{
-                "Index","Name", "Price ($)"
+                "Index", "Name", "Price ($)"
         };
 
         tableModel = new DefaultTableModel(null, columnNames) {
@@ -126,9 +126,9 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(addFoodButton)) {
-            new AddFoodUI(this, ftoList);
+            new AddFoodGUI(this, ftoList);
         } else if (e.getActionCommand().equals(setTimeButton)) {
-            new SetTimeUI(this, ftoList);
+            new SetTimeGUI(this, ftoList);
         } else if (e.getActionCommand().equals(removeFoodButton)) {
             deleteSelectedRowFromTable();
         }
@@ -146,7 +146,7 @@ public class FoodToOrderListUI extends JFrame implements ActionListener {
             tableModel.removeRow(getSelectedRowForDeletion);
             ftoList.removeFood(ftoList.getFoodList().get(getSelectedRowForDeletion));
             dispose();
-            new FoodToOrderListUI(ftoList);
+            new FoodToOrderListGUI(ftoList);
             JOptionPane.showMessageDialog(null, "Remove Successfully");
         } else {
             JOptionPane.showMessageDialog(null,

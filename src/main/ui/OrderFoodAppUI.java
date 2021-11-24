@@ -18,7 +18,7 @@ import java.util.Scanner;
 // Link: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
 // Food ordering and delivery app
-public class OrderFoodApp {
+public class OrderFoodAppUI {
     private static final String JSON_STORE = "./data/foodToOrderList.json";
     private FoodToOrderList foodToOrderList;
     private Food salad;
@@ -32,7 +32,7 @@ public class OrderFoodApp {
     private JsonReader jsonReader;
 
     //EFFECTS: runs the ordering food application
-    public OrderFoodApp() throws FileNotFoundException {
+    public OrderFoodAppUI() throws FileNotFoundException {
         init();
         runOrderFoodApp();
     }
@@ -47,7 +47,6 @@ public class OrderFoodApp {
         burger = new Food("Burger", 13);
         coke = new Food("Coke", 2);
         appleJuice = new Food("Apple Juice", 3);
-        foodToOrderList.setDeliveredTime("00:00");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         jsonWriter = new JsonWriter(JSON_STORE);

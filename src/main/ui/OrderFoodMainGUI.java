@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.FoodToOrderList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -14,7 +16,7 @@ import java.io.IOException;
 
 
 // Represents the application's main window frame
-public class OrderFoodMainUI extends JFrame implements ActionListener {
+public class OrderFoodMainGUI extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/foodToOrderList.json";
     private FoodToOrderList ftoList;
     private static final int X_POSITION = 390;
@@ -24,7 +26,7 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     private String quitButton;
     private String saveButton;
     private String loadButton;
-    private FoodToOrderListUI foodToOrderListUI;
+    private FoodToOrderListGUI foodToOrderListGUI;
     private ImageIcon backgroundImageIcon;
     private JLabel selectionLabel;
     private JLabel backgroundLabel;
@@ -35,7 +37,7 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     // This method references code from this website
     // Link: https://stackoverflow.com/a/6578266
     //EFFECTS: sets up the order-food main window
-    public OrderFoodMainUI() throws FileNotFoundException {
+    public OrderFoodMainGUI() throws FileNotFoundException {
         super("Order Food Application");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(702, 856));
@@ -65,7 +67,6 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     //         image icon, json writer, and json reader
     private void init() {
         ftoList = new FoodToOrderList();
-        ftoList.setDeliveredTime("00:00");
         orderButton = "Start New Order";
         saveButton = "Save Your Order";
         loadButton = "Load Your Saved Order";
@@ -111,17 +112,18 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     //EFFECTS: acts correspondingly when a button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getActionCommand().equals(quitButton)) {
+            EventLog theLog = EventLog.getInstance();
+            for (Event event : theLog) {
+                System.out.println(event.toString() + "\n");
+            }
             System.exit(0);
         } else if (e.getActionCommand().equals(orderButton)) {
             this.ftoList = new FoodToOrderList();
-            //set default time to be "00:00"
-            ftoList.setDeliveredTime("00:00");
-            new FoodToOrderListUI(ftoList);
+            new FoodToOrderListGUI(ftoList);
         } else if (e.getActionCommand().equals(loadButton)) {
             loadFoodToOrderList();
-            foodToOrderListUI = new FoodToOrderListUI(ftoList);
+            foodToOrderListGUI = new FoodToOrderListGUI(ftoList);
         } else if (e.getActionCommand().equals(saveButton)) {
             saveFoodToOrderList();
             JOptionPane.showMessageDialog(null, "Save your current order successfully");
@@ -155,7 +157,7 @@ public class OrderFoodMainUI extends JFrame implements ActionListener {
     // starts the order-food main ui
     public static void main(String[] args) {
         try {
-            new OrderFoodMainUI();
+            new OrderFoodMainGUI();
         } catch (FileNotFoundException e) {
             System.out.println("Unable to run application: file not found");
         }

@@ -17,7 +17,7 @@ public class FoodToOrderList implements Writable {
     private ArrayList<Food> foodList;
     private int totalPrice;
     private int totalFoodNum;
-    private String deliveredTime;
+    private String deliveredTime = "00:00";  // default delivered time
 
     //EFFECTS: initializes a newly created FoodList as an empty list
     public FoodToOrderList() {
@@ -33,6 +33,8 @@ public class FoodToOrderList implements Writable {
     //EFFECTS: adds the food to the list of food
     public void addFood(Food food) {
         foodList.add(food);
+        EventLog.getInstance().logEvent(new Event("Add the food： " + food.getName()
+                + " to food-to-order list"));
     }
 
     //MODIFIES: this
@@ -40,6 +42,8 @@ public class FoodToOrderList implements Writable {
     //         Otherwise, does nothing.
     public void removeFood(Food food) {
         foodList.remove(food);
+        EventLog.getInstance().logEvent(new Event("Remove the food: " + food.getName()
+                + " from food-to-order list"));
     }
 
     //REQUIRES: totalPrice >= 0
@@ -96,16 +100,20 @@ public class FoodToOrderList implements Writable {
             return "00:00";
         }
         return deliveredTime;
+
     }
 
     //MODIFIES: this
-    //EFFECTS: If the time is invalid or unset, sets delivered time as "00:00" by default time
+    //EFFECTS: If the time is invalid or unset, sets delivered time as "00:00" by default.
     //         Otherwise, sets delivered time to be the time in hh:mm pattern.
     public void setDeliveredTime(String time) {
         if (!isValidTime(time)) {
             time = "00:00";
         }
         deliveredTime = time;
+        EventLog.getInstance().logEvent(new Event("Set delivered time to: "
+                + time + " (in 24-hour-clock)"));
+
 
     }
 

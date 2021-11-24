@@ -2,10 +2,10 @@ package ui;
 
 import java.io.FileNotFoundException;
 
-public class Main {
+public class MainUI {
     public static void main(String[] args) {
         try {
-            new OrderFoodApp();
+            new OrderFoodAppUI();
         } catch (FileNotFoundException e) {
             System.out.println("Unable to run application: file not found");
         }
