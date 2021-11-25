@@ -70,7 +70,7 @@ be no events getting logged when the program runs since no events occur.
   for printing out the events will not be called.
   - The events are printed out only if the user clicks the quit button to exit. If the user does not click the 
   quit button to exit, then the method for printing out the events will not be called such that there will be no events 
-  being printed.
+  being printed out.
   
 
 ### Phase 4: Task 3
