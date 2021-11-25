@@ -59,15 +59,15 @@ their time and making the food of the restaurant that only allows delivery avail
   <br/>Set delivered time to: 19:53 (in 24-hour-clock) <br /> &nbsp;
 
 
-- Explanation for no events logged when the program runs:
+- Explanation for no events being printed out when the program runs:
 
   - If the user does not add food, remove food or set delivered time before quitting the APP, there will
 be no events getting logged when the program runs since no events occur.
   - If the user clicks the quit button and an error, like NullPointerException, pops up, then there will be no 
-  events being printed since the program directly ends when an error occurs and the method for printing out 
+  events being printed out since the program directly ends when an error occurs and the method for printing out 
   the events will not be called.
-  - The events are logged only if the user clicks the quit button to exit. If the user does not click the quit button 
-  to exit, then the method for printing out the events will not be called such that there will be no events 
+  - The events are printed out only if the user clicks the quit button to exit. If the user does not click the 
+  quit button to exit, then the method for printing out the events will not be called such that there will be no events 
   being printed.
   
 
