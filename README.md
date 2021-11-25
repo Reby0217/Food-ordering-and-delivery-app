@@ -30,9 +30,6 @@ their time and making the food of the restaurant that only allows delivery avail
 - As a user, I want to be able to load my food-to-order list from file.
 
 ### Phase 4: Task 2
-- If the user does not add food, remove food or set delivered time before quitting the APP, there will 
-be no events getting logged when the program runs. 
-
 
 - A representative sample of the events that occur when the program runs: <br />
   &nbsp;
@@ -61,6 +58,8 @@ be no events getting logged when the program runs.
   Wed Nov 24 21:27:32 PST 2021
   <br/>Set delivered time to: 19:53 (in 24-hour-clock) <br /> &nbsp;
 
+(If the user does not add food, remove food or set delivered time before quitting the APP, there will
+be no events getting logged when the program runs.)
 
 ### Phase 4: Task 3
 - I would refactor those the GUI classes in the ui package to improve the design. I would create an 

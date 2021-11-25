@@ -63,7 +63,6 @@ public class AddFoodGUI extends JFrame implements ActionListener {
         setButton(addCokeButtonText, 370);
         setButton(addAppleJuiceButtonText, 420);
 
-
     }
 
     //EFFECTS: adds a button at the given y-position with set
