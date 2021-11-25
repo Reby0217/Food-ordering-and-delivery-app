@@ -33,8 +33,7 @@ public class FoodToOrderList implements Writable {
     //EFFECTS: adds the food to the list of food
     public void addFood(Food food) {
         foodList.add(food);
-        EventLog.getInstance().logEvent(new Event("Add the food： " + food.getName()
-                + " to food-to-order list"));
+        EventLog.getInstance().logEvent(new Event(food.getName() + " added to food-to-order list"));
     }
 
     //MODIFIES: this
@@ -42,8 +41,8 @@ public class FoodToOrderList implements Writable {
     //         Otherwise, does nothing.
     public void removeFood(Food food) {
         foodList.remove(food);
-        EventLog.getInstance().logEvent(new Event("Remove the food: " + food.getName()
-                + " from food-to-order list"));
+        EventLog.getInstance().logEvent(new Event(food.getName()
+                + " removed from food-to-order list"));
     }
 
     //REQUIRES: totalPrice >= 0
