@@ -22,10 +22,10 @@ public class OrderFoodMainGUI extends JFrame implements ActionListener {
     private static final int X_POSITION = 390;
     private static final int WIDTH = 250;
     private static final int HEIGHT = 50;
-    private String orderButton;
-    private String quitButton;
-    private String saveButton;
-    private String loadButton;
+    private String orderButtonText;
+    private String quitButtonText;
+    private String saveButtonText;
+    private String loadButtonText;
     private FoodToOrderListGUI foodToOrderListGUI;
     private ImageIcon backgroundImageIcon;
     private JLabel selectionLabel;
@@ -51,6 +51,7 @@ public class OrderFoodMainGUI extends JFrame implements ActionListener {
         selectionLabel.setForeground(Color.DARK_GRAY);
         selectionLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
 
+
         addButtons();
 
         setBackgroundImage();
@@ -67,10 +68,10 @@ public class OrderFoodMainGUI extends JFrame implements ActionListener {
     //         image icon, json writer, and json reader
     private void init() {
         ftoList = new FoodToOrderList();
-        orderButton = "Start New Order";
-        saveButton = "Save Your Order";
-        loadButton = "Load Your Saved Order";
-        quitButton = "Quit the APP";
+        orderButtonText = "Start New Order";
+        saveButtonText = "Save Your Order";
+        loadButtonText = "Load Your Saved Order";
+        quitButtonText = "Quit the APP";
         selectionLabel = new JLabel("Please select from: ", JLabel.CENTER);
         backgroundImageIcon = new ImageIcon("./images/background1.png");
         backgroundLabel = new JLabel("", backgroundImageIcon, JLabel.CENTER);
@@ -83,10 +84,10 @@ public class OrderFoodMainGUI extends JFrame implements ActionListener {
 
     //EFFECTS: adds buttons on the order-food main window
     private void addButtons() {
-        setButton(loadButton, 110);
-        setButton(orderButton, 170);
-        setButton(saveButton, 230);
-        setButton(quitButton, 290);
+        setButton(loadButtonText, 110);
+        setButton(orderButtonText, 170);
+        setButton(saveButtonText, 230);
+        setButton(quitButtonText, 290);
 
     }
 
@@ -112,19 +113,19 @@ public class OrderFoodMainGUI extends JFrame implements ActionListener {
     //EFFECTS: acts correspondingly when a button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(quitButton)) {
+        if (e.getActionCommand().equals(quitButtonText)) {
             EventLog theLog = EventLog.getInstance();
             for (Event event : theLog) {
                 System.out.println(event.toString() + "\n");
             }
             System.exit(0);
-        } else if (e.getActionCommand().equals(orderButton)) {
+        } else if (e.getActionCommand().equals(orderButtonText)) {
             this.ftoList = new FoodToOrderList();
             new FoodToOrderListGUI(ftoList);
-        } else if (e.getActionCommand().equals(loadButton)) {
+        } else if (e.getActionCommand().equals(loadButtonText)) {
             loadFoodToOrderList();
             foodToOrderListGUI = new FoodToOrderListGUI(ftoList);
-        } else if (e.getActionCommand().equals(saveButton)) {
+        } else if (e.getActionCommand().equals(saveButtonText)) {
             saveFoodToOrderList();
             JOptionPane.showMessageDialog(null, "Save your current order successfully");
         }

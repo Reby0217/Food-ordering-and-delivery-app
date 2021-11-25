@@ -1,19 +1,9 @@
 {
-    "totalFoodNum": 3,
-    "totalPrice": 23,
-    "foodList": [
-        {
-            "price": 15,
-            "name": "Poke Bowl"
-        },
-        {
-            "price": 6,
-            "name": "Onion Rings"
-        },
-        {
-            "price": 2,
-            "name": "Coke"
-        }
-    ],
-    "deliveredTime": "19:22"
+    "totalFoodNum": 1,
+    "totalPrice": 3,
+    "foodList": [{
+        "price": 3,
+        "name": "Apple Juice"
+    }],
+    "deliveredTime": "19:59"
 }

@@ -64,4 +64,6 @@ be no events getting logged when the program runs.)
 ### Phase 4: Task 3
 - I would refactor those the GUI classes in the ui package to improve the design. I would create an 
 abstract class called GUI and let AddFoodGUI, FoodToOrderListGUI, OrderFoodMainGUI, and SetTimeGUI extend
-this abstract class.
+this abstract class. I would move the methods that all these GUI classes have in order to set up a window frame 
+into that abstract class, like the method adding buttons to the corresponding window. I would move the field, ftoList, 
+into that abstract class as well since all of these GUI classes in the ui package all have the field, ftoList. 
