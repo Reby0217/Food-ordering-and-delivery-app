@@ -58,12 +58,22 @@ their time and making the food of the restaurant that only allows delivery avail
   Wed Nov 24 21:27:32 PST 2021
   <br/>Set delivered time to: 19:53 (in 24-hour-clock) <br /> &nbsp;
 
-(If the user does not add food, remove food or set delivered time before quitting the APP, there will
-be no events getting logged when the program runs.)
+
+- Explanation for no events logged when the program runs:
+
+  - If the user does not add food, remove food or set delivered time before quitting the APP, there will
+be no events getting logged when the program runs since no events occur.
+  - If the user clicks the quit button and an error, like NullPointerException, pops up, then there will be no 
+  events being printed since the program directly ends when an error occurs and the method for printing out 
+  the events will not be called.
+  - The events are logged only if the user clicks the quit button to exit. If the user does not click the quit button 
+  to exit, then the method for printing out the events will not be called such that there will be no events 
+  being printed.
+  
 
 ### Phase 4: Task 3
-- I would refactor those the GUI classes in the ui package to improve the design. I would create an 
-abstract class called GUI and let AddFoodGUI, FoodToOrderListGUI, OrderFoodMainGUI, and SetTimeGUI extend
+- I would refactor those GUI classes in the ui package to improve the design. I would create a 
+class called GUI and let AddFoodGUI, FoodToOrderListGUI, OrderFoodMainGUI, and SetTimeGUI extend
 this abstract class. I would move the methods that all these GUI classes have in order to set up a window frame 
 into that abstract class, like the method adding buttons to the corresponding window. I would move the field, ftoList, 
 into that abstract class as well since all of these GUI classes in the ui package all have the field, ftoList. 
