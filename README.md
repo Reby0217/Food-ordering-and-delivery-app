@@ -78,4 +78,4 @@ be no events getting logged when the program runs since no events occur.
 class called GUI and let AddFoodGUI, FoodToOrderListGUI, OrderFoodMainGUI, and SetTimeGUI extend
 this new class. I would move the methods that all these GUI classes have in order to set up a window frame 
 into that new class, like the method adding buttons to the corresponding window. I would move the field, ftoList, 
-into that new class as well since all of these GUI classes in the ui package all have the field, ftoList. 
+into that new class as well since all of these GUI classes in the ui package have the field, ftoList. 
