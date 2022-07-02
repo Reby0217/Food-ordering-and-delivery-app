@@ -1,4 +1,4 @@
-# My Personal Project
+# Academic Project
 
 ## A food ordering and delivery app
 
